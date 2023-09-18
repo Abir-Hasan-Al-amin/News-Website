@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+</head>
+<body>
+    <nav>
+        <section class="main-nav container flex">
+            <a href="#" class="c-logo">
+                <img src="https://t3.ftcdn.net/jpg/01/79/14/62/360_F_179146215_NEoBhSC2oKw9hwX7K3hAkAPLZueAeGEs.jpg" alt="">
+            </a>
+            <section class="nav-links">
+                <ul class="flex">
+                    <li class="hover-links nav-item">Cricket</li>
+                    <li class="hover-links nav-item">Politics</li>
+                    <li class="hover-links nav-item">Football</li>
+                </ul>
+            </section>
+            <section class="search-bar">
+                <input type="text" class="news-input" placeholder=" e.g. GDP">
+                <button class="search-button">Search</button>
+            </section>
+        </section>
+    </nav>
+    <main>
+        <section class="cards-container container flex">
+
+        </section>
+    </main>
+    <template id="temp-news-card">
+        <section class="card">
+            <section class="card-header">
+                <img src="https://via.placeholder.com/400x200" alt="">
+            </section>
+            <section class="card-content">
+                <h3 id="news-title">This is the title</h3>
+                <h6 class="news-source" id="news-source">End Gadget 18/9/23</h6>
+                <p class="news-des" id="news-des">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi eum consequatur repudiandae accusamus saepe quisquam reprehenderit ab nemo quibusdam veritatis.</p>
+            </section>
+        </section>
+    </template>
+    <script src="code.js"></script>
+</body>
+</html>
