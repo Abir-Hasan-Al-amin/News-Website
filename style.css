@@ -30,7 +30,7 @@ ul{
     align-items: center;
 }
 .container{
-    max-width: 1180px;
+    max-width: 1300px;
     margin-inline: auto;
     overflow: hidden;
 }
@@ -61,6 +61,9 @@ nav{
 }
 .hover-links:active{
     color: red;
+}
+.nav-item.active{
+    color: var(--accent-color);
 }
 .search-bar{
     height: 32px;
