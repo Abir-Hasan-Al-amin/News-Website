@@ -1,5 +1,5 @@
-const API_KEY ="069716097cdbbca9a090fa2e1b7083aa";//use api key
-const url = "http://api.mediastack.com/v1/news? access_key = ";
+const API_KEY ="";//use api key
+const url = "https://newsapi.org/v2/everything?q=";
 
 window.addEventListener('load',()=>fetchNews("Global"));
 function reload(){
@@ -7,39 +7,37 @@ function reload(){
     searchTxt.value="";
 }
 async function fetchNews(query) {
-    // const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
-    const res = await fetch(`http://api.mediastack.com/v1/news?access_key=${API_KEY}&keywords=${query}&countries=gb`);
+    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
     const data = await res.json();
-    console.log(data);
-    bindData(data.data);
+    bindData(data.articles);
 }
-function bindData(datas) {
+function bindData(articles) {
     const cardContainer=document.querySelector("#card_container");
     const newsTemp =document.querySelector("#temp-news-card");
     cardContainer.innerHTML="";
-    datas.forEach(data => {
-        if(!data.image){
+    articles.forEach(article => {
+        if(!article.urlToImage){
             return;
         } 
         const cardClone = newsTemp.content.cloneNode(true);
-        fillDataCard(cardClone,data);
+        fillDataCard(cardClone,article);
         cardContainer.appendChild(cardClone);
     });
 }
-function fillDataCard(cardClone,data) {
+function fillDataCard(cardClone,article) {
     const newsImage = cardClone.querySelector("#news-img");
     const newsTitle = cardClone.querySelector("#news-title");
     const newsSource = cardClone.querySelector("#news-source");
     const newsDsc = cardClone.querySelector("#news-des");
-    newsImage.src=data.image;
-    newsTitle.innerHTML=data.title;
-    newsDsc.innerHTML= data.description;
-    const date = new Date(data.published_at).toLocaleString("en-US",{
+    newsImage.src=article.urlToImage;
+    newsTitle.innerHTML=article.title;
+    newsDsc.innerHTML= article.description;
+    const date = new Date(article.publishedAt).toLocaleString("en-US",{
         timeZone:"Asia/Jakarta"
     });
-    newsSource.innerHTML=`${data.source} -  ${date}`;
+    newsSource.innerHTML=`${article.source.name} -  ${date}`;
     cardClone.firstElementChild.addEventListener('click',()=>{
-        window.open(data.url,"_blank");
+        window.open(article.url,"_blank");
     });
 }
 let curSelectNav= null;
